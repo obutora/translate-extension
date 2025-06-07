@@ -1,0 +1,42 @@
+{
+    "manifest_version": 3,
+    "name": "Udemy字幕翻訳拡張",
+    "version": "1.0.0",
+    "description": "UdemyのWebサイトで英語字幕をリアルタイムで日本語に翻訳するChrome拡張機能",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://*.udemy.com/*"
+    ],
+    "background": {
+        "service_worker": "src/background/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.udemy.com/*"
+            ],
+            "js": [
+                "src/content/contentScript.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "action": {
+        "default_popup": "src/popup/popup.html",
+        "default_title": "Udemy字幕翻訳",
+        "default_icon": {
+            "16": "icons/icon16.png",
+            "48": "icons/icon48.png",
+            "128": "icons/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    }
+}
